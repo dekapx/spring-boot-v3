@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>contact-service-v1</artifactId>
+	<artifactId>contact-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>contact-service-v1</name>
 	<description>Demo project for Spring Boot</description>
