@@ -1,7 +1,8 @@
-type Contact {
+type Person{
     id: ID!
-    firstName: String
-    lastName: String
-    email: String
-    phone: String
+    name: String!
+}
+
+type Query{
+    persons: [Person]
 }
