@@ -18,8 +18,13 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @QueryMapping(value = "persons")
+    @QueryMapping
     public List<Person> findAll() {
         return this.personService.findAll();
+    }
+
+    @QueryMapping
+    public Person findById(@Argument(name = "id") Long id) {
+        return this.personService.findById(id);
     }
 }
