@@ -11,15 +11,21 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> findAll() {
         Person person = new Person();
         person.setId(1L);
-        person.setName("Test Person");
+        person.setFirstName("Test");
+        person.setLastName("Person");
+        person.setPhone("+1 111 222 3344");
+        person.setEmail("test.person@dummy.com");
         return List.of(person);
     }
 
     @Override
     public Person findById(Long id) {
         Person person = new Person();
-        person.setId(2L);
-        person.setName("Dummy User");
+        person.setId(id);
+        person.setFirstName("Test");
+        person.setLastName("Person");
+        person.setPhone("+1 111 222 3344");
+        person.setEmail("test.person@dummy.com");
         return person;
     }
 }

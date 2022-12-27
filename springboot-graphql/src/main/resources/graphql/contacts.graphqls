@@ -1,9 +1,12 @@
 type Person{
     id: ID!
-    name: String!
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
 }
 
 type Query{
-    findAll: [Person]
-    findById(id:ID!): Person
+    persons: [Person]
+    personById(id: ID!): Person
 }
