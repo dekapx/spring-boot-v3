@@ -1,31 +1,30 @@
 package com.dekapx.apps.service;
 
+import com.dekapx.apps.exception.ResourceNotFoundException;
 import com.dekapx.apps.model.Person;
+import com.dekapx.apps.repository.PersonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class PersonServiceImpl implements PersonService {
+    private PersonRepository repository;
+
     @Override
     public List<Person> findAll() {
-        Person person = new Person();
-        person.setId(1L);
-        person.setFirstName("Test");
-        person.setLastName("Person");
-        person.setPhone("+1 111 222 3344");
-        person.setEmail("test.person@dummy.com");
-        return List.of(person);
+        final List<Person> persons = new ArrayList<>();
+        this.repository.findAll().forEach(persons::add);
+        return persons;
     }
 
     @Override
-    public Person findById(Long id) {
-        Person person = new Person();
-        person.setId(id);
-        person.setFirstName("Test");
-        person.setLastName("Person");
-        person.setPhone("+1 111 222 3344");
-        person.setEmail("test.person@dummy.com");
-        return person;
+    public Person findById(final Long id) {
+        return this.repository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Person with ID [%d] not found.", id)));
     }
 }

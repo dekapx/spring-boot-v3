@@ -1,0 +1,16 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: contact-service
+    datasource:
+        password: passw0rd
+        url: jdbc:postgresql://localhost:5432/testdb
+        username: dekapx
+    graphql:
+        graphiql:
+            enabled: true
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
