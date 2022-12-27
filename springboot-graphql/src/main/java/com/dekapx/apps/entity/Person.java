@@ -1,4 +1,4 @@
-package com.dekapx.apps.model;
+package com.dekapx.apps.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.Cache;

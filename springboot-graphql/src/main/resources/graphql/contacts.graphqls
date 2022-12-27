@@ -10,3 +10,14 @@ type Query{
     persons: [Person]
     personById(id: ID!): Person
 }
+
+type Mutation {
+    addNewPerson(personInput: PersonInput!):Person
+}
+
+input PersonInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
+}
