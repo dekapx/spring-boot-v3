@@ -6,13 +6,14 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
-		<relativePath/>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>service-locator-factory-v1</artifactId>
+	<artifactId>springboot-test-driven</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-locator-factory-v1</name>
-	<description>SpringBoot Service Locator Factory Bean Demo</description>
+	<name>springboot-test-driven</name>
+	<description>Spring Boot Test Driven Development</description>
 
 	<properties>
 		<java.version>19</java.version>
@@ -23,6 +24,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -51,4 +53,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
