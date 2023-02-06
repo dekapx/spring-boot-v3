@@ -18,10 +18,10 @@ spring:
 
       bindings:
         producer-out-0:
-          destination : first-topic
+          destination : test-topic-inbound
           producer:
             useNativeEncoding: true
         consumer-in-0:
-          destination : first-topic
+          destination : test-topic-inbound
           consumer:
             use-native-decoding: true
