@@ -13,6 +13,9 @@ spring:
             consumer:
               configuration:
                 value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                max.poll.records: 50
+                min.fetch.bytes: 5000
+                fetch.max.wait.ms: 1000
         binder:
           brokers: localhost:9092
 
@@ -25,5 +28,5 @@ spring:
           destination: test-topic-inbound
           consumer:
             batch-mode: true
-            consumer.concurrency: 2
+            max-attempts: 1
             use-native-decoding: true

@@ -12,9 +12,9 @@ public class MessageGenerator {
     @Autowired
     private StreamBridge streamBridge;
 
-    @Scheduled(cron = "*/2 * * * * *")
+    @Scheduled(cron = "*/1 * * * * *")
     public void generateAndSendMessages() {
-        IntStream.rangeClosed(1, 10).forEach(i -> {
+        IntStream.rangeClosed(1, 500).forEach(i -> {
             this.streamBridge.send("producer-out-0","StreamBridge - Test Message #" + i);
         });
     }
