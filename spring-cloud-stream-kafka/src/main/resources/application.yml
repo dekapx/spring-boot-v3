@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    function:
+      definition: consumer;producer
+    stream:
+      kafka:
+        bindings:
+          producer-out-0:
+            producer:
+              configuration:
+                value.serializer: com.dekapx.apps.coverter.MessageSerializer
+          consumer-in-0:
+            consumer:
+              configuration:
+                value.deserializer: com.dekapx.apps.coverter.MessageDeserializer
+        binder:
+          brokers: localhost:9092
+
+      bindings:
+        producer-out-0:
+          destination : first-topic
+          producer:
+            useNativeEncoding: true
+        consumer-in-0:
+          destination : first-topic
+          consumer:
+            use-native-decoding: true
