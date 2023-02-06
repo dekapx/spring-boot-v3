@@ -18,10 +18,12 @@ spring:
 
       bindings:
         producer-out-0:
-          destination : test-topic-inbound
+          destination: test-topic-inbound
           producer:
             useNativeEncoding: true
         consumer-in-0:
-          destination : test-topic-inbound
+          destination: test-topic-inbound
           consumer:
+            batch-mode: true
+            consumer.concurrency: 2
             use-native-decoding: true
