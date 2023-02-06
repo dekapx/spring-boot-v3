@@ -14,7 +14,7 @@ public class MessageGenerator {
     private StreamBridge streamBridge;
 
     @Scheduled(cron = "*/2 * * * * *")
-    public void sendMessage() {
+    public void generateAndSendMessages() {
         IntStream.rangeClosed(1, 10).forEach(i -> {
             this.streamBridge.send("producer-out-0",
                     new Message("Test Message from Stream bridge #" + i));
