@@ -13,8 +13,12 @@ public class KafkaMessageConsumer {
     @Bean
     public Consumer<List<String>> consumer() {
         return messages -> {
-            log.info("Collection size [{}]", messages.size());
-            messages.forEach(msg -> log.info("Message received {}", msg));
+            log.info("------------------ Collection size [{}] ------------------", messages.size());
+            messages.forEach(processMessage);
         };
     }
+
+    private Consumer<String> processMessage = (msg) -> {
+        log.info("Message received {}", msg);
+    };
 }
