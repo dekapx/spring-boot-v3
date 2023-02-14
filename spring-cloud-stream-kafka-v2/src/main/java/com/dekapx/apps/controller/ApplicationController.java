@@ -12,6 +12,6 @@ public class ApplicationController {
     @GetMapping(value = "/info", produces = "application/json")
     public String getInfo() {
         log.info("ApplicationController.getInfo() invoked...");
-        return "Spring Cloud Stream Kafka Application...";
+        return "Spring Cloud Stream Kafka v2...";
     }
 }
