@@ -50,7 +50,6 @@ public class ContactController {
     @GetMapping(value = "/contact/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> findContactById(@PathVariable Long id) {
-        log.info("Find Contact for ID [{}]", id);
         final Contact contact = this.service.findById(id);
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
