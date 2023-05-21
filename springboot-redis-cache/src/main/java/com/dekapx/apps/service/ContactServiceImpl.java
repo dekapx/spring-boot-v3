@@ -5,6 +5,7 @@ import com.dekapx.apps.exception.ResourceNotFoundException;
 import com.dekapx.apps.repository.ContactRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,6 +19,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Cacheable(value = "contactCache", key="#id")
     public Contact findById(final Long id) {
         log.info("Perform lookup for Contact ID [{}]", id);
         return this.repository.findById(id).orElseThrow(
