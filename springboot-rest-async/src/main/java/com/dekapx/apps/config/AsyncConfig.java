@@ -13,10 +13,10 @@ public class AsyncConfig implements AsyncConfigurer {
     @Bean("taskExecutor")
     @Override
     public AsyncTaskExecutor getAsyncExecutor() {
-        final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setThreadNamePrefix("dekapx-async");
-        executor.setCorePoolSize(2);
-        executor.initialize();
-        return executor;
+        final ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.setThreadNamePrefix("dekapx-async");
+        threadPoolTaskExecutor.setCorePoolSize(2);
+        threadPoolTaskExecutor.initialize();
+        return threadPoolTaskExecutor;
     }
 }
