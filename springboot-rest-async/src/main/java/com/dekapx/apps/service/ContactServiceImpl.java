@@ -30,7 +30,7 @@ public class ContactServiceImpl implements ContactService {
     public CompletableFuture<Void> doAsync() {
         log.info("start");
         return CompletableFuture.allOf()
-                .thenAccept(__ -> {
+                .thenAccept(future -> {
                     IntStream.rangeClosed(1, 5)
                                     .forEach(i -> {
                                         try {
