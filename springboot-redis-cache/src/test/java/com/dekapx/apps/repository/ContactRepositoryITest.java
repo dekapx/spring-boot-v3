@@ -28,7 +28,7 @@ public class ContactRepositoryITest {
         assertThat(contacts)
                 .isNotNull()
                 .isNotEmpty()
-                .hasAtLeastOneElementOfType(Contact.class);
-        ;
+                .hasAtLeastOneElementOfType(Contact.class)
+                .filteredOn(c -> !c.getFirstName().isEmpty());
     }
 }
