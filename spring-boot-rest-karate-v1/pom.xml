@@ -16,7 +16,7 @@
     <description>Spring Boot Integration Tests with Karate</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>20</java.version>
         <springdoc-openapi-starter.version>2.1.0</springdoc-openapi-starter.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
         <karate-apache.version>0.9.6</karate-apache.version>
