@@ -4,8 +4,8 @@ services:
     image: postgres:14.1
     restart: always
     environment:
-      - POSTGRES_USER=dekapx
-      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=${USER_NAME}
+      - POSTGRES_PASSWORD=${PASSWORD}
       - POSTGRES_DB=testdb
     ports:
       - '5432:5432'
@@ -14,7 +14,3 @@ services:
 volumes:
   db:
     driver: local
-
-#  docker container run --name docker-postgres -p 5432:5432
-#  -e POSTGRES_USER=dekapx -e POSTGRES_PASSWORD=passw0rd -e
-#  POSTGRES_DB=testdb -v pgdata:/var/lib/postgresql/data postgres:14.1
