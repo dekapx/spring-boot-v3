@@ -4,9 +4,8 @@ spring:
     application:
         name: audit-service
     datasource:
-        platform: POSTGRESQL
-        username: 'dekapx'
-        password: 'passw0rd'
+        username: ${USER_NAME}
+        password: ${PASSWORD}
         url: jdbc:postgresql://localhost:5432/testdb
         jpa:
             hibernate:
