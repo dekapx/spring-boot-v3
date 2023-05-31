@@ -19,9 +19,9 @@ public class ContactRepositoryITest {
         Contact contact = this.repository.findById(1L).get();
         assertThat(contact).isNotNull()
                 .satisfies(c -> {
-                    assertThat(c.getFirstName()).isEqualTo("Kapil");
-                    assertThat(c.getLastName()).isEqualTo("Kumar");
-                    assertThat(c.getEmail()).isEqualTo("kapil.kumar@optum.com");
+                    assertThat(c.getFirstName()).isEqualTo("test");
+                    assertThat(c.getLastName()).isEqualTo("user");
+                    assertThat(c.getEmail()).isEqualTo("test.user@test.com");
                 });
     }
 
