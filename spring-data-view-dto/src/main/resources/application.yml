@@ -2,7 +2,7 @@ server:
     port: 9192
 spring:
     application:
-        name: audit-service
+        name: 'spring-data-view'
     datasource:
         username: ${USER_NAME}
         password: ${PASSWORD}

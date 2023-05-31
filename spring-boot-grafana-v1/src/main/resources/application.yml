@@ -24,11 +24,10 @@ management:
 
 spring:
   application:
-    name: audit-service
+    name: 'spring-boot-grafana'
   datasource:
-    platform: POSTGRESQL
-    username: dekapx
-    password: passw0rd
+    username: ${USERNAME}
+    password: ${PASSWORD}
     url: jdbc:postgresql://localhost:5432/testdb
     jpa:
       hibernate:
