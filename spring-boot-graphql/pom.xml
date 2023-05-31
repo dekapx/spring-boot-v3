@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>springboot-graphql</artifactId>
+	<artifactId>spring-boot-graphql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-graphql</name>
+	<name>spring-boot-graphql</name>
 	<description>Demo project for Spring Boot GraphQL</description>
 
 	<properties>

@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>springboot-rest-async</artifactId>
+    <artifactId>spring-boot-rest-async</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-rest-async</name>
+    <name>spring-boot-rest-async</name>
     <description>Spring Boot REST Async</description>
 
     <properties>
