@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: 'springboot-rest-karate'
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+management:
+  endpoint:
+    metrics:
+      tag:
+        application: ${spring.application.name}
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: 'prometheus, health'

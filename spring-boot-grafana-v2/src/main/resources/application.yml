@@ -1,0 +1,39 @@
+info:
+  app:
+    name: '@project.name@'
+
+server:
+  port: 8181
+
+management:
+  endpoint:
+    metrics:
+      tag:
+        application: ${spring.application.name}
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: 'prometheus'
+
+spring:
+  application:
+    name: audit-service
+  datasource:
+    platform: POSTGRESQL
+    username: dekapx
+    password: passw0rd
+    url: jdbc:postgresql://localhost:5432/testdb
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
