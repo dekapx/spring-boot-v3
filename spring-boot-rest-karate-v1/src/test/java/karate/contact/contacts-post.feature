@@ -8,9 +8,9 @@ Feature: Contact API Test
     * print jsonModel
 
   Scenario: Create new contact
-    * def jsonModel = read('data/createNewRequest.json')
     Given path '/api/v1/contacts'
     And header Content-Type = 'application/json'
+    And def jsonModel = read('data/createNewRequest.json')
     And request jsonModel
     When method POST
     Then status 201
