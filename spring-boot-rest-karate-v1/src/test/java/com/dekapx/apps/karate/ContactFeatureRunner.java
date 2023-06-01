@@ -8,6 +8,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ContactFeatureRunner {
     @Karate.Test
+    Karate testAll() {
+        return Karate.run().relativeTo(getClass());
+    }
+
+    @Karate.Test
     @Order(1)
     Karate verifyApplicationHealth() {
         return Karate.run("actuator-health").relativeTo(getClass());
