@@ -9,7 +9,7 @@ Feature: Contact GET Feature
     And header Content-Type = 'application/json'
     When method GET
     Then status 200
-    And match $ == read('find-one-response.json')
+    And match $ == read('data/findByIdResponse.json')
     And match response.firstName == 'Test'
     And match response.lastName == 'Person'
     And match response == {id: '#(id)', firstName: 'Test', lastName: 'Person', email: 'test.person@google.com', phone: '+353 089 123 4567'}
@@ -21,6 +21,6 @@ Feature: Contact GET Feature
     Then status 200
     And assert response.length == 1
     And match response[*].id == [1]
-    And match $ == read('find-all-response.json')
+    And match $ == read('data/findAllResponse.json')
     And match response[0].firstName == 'Test'
     And match response[0].lastName == 'Person'
