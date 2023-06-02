@@ -5,6 +5,6 @@ Feature: Application Health Check
 
   Scenario: Actuator Health UP
     Given path 'actuator/health'
-    When method get
+    When method GET
     Then status 200
     And match response.status == 'UP'
