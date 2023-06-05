@@ -8,8 +8,6 @@ server:
 management:
   endpoint:
     metrics:
-      tag:
-        application: ${spring.application.name}
     health:
       show-details: always
     shutdown:
@@ -29,10 +27,10 @@ spring:
     username: ${USERNAME}
     password: ${PASSWORD}
     url: jdbc:postgresql://localhost:5432/testdb
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-      show-sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
