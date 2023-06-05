@@ -15,5 +15,4 @@ public class KarateTestRunner {
                 .parallel(2);
         Assertions.assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
-
 }

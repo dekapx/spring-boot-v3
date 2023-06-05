@@ -13,19 +13,19 @@ public class ContactFeatureRunner {
 //    }
 
     @Karate.Test
-    @Order(2)
+    @Order(1)
     Karate verifyContactGetFeature() {
         return Karate.run("contacts-get").relativeTo(getClass());
     }
 
     @Karate.Test
-    @Order(3)
+    @Order(2)
     Karate verifyContactPostFeature() {
         return Karate.run("contacts-post").relativeTo(getClass());
     }
 
     @Karate.Test
-    @Order(4)
+    @Order(3)
     Karate verifyContactPutFeature() {
         return Karate.run("contacts-put").relativeTo(getClass());
     }
