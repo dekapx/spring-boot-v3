@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: Contact API Test
 
   Background:

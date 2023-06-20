@@ -12,6 +12,7 @@ public class KarateTestRunner {
         Results results = Runner
                 .builder()
                 .relativeTo(getClass())
+                .tags("anyOf('@SmokeTest')")
                 .parallel(2);
         Assertions.assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }

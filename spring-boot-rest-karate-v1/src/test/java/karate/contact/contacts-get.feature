@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: Contact GET Feature
 
   Background:

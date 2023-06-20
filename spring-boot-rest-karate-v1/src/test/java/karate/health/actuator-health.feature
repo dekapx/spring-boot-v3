@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: Application Health Check
 
   Background:
