@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.dekapx.apps</groupId>
-    <artifactId>spring-boot-rest-karate-v1</artifactId>
+    <artifactId>spring-boot-rest-karate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-rest-karate-v1</name>
+    <name>spring-boot-rest-karate</name>
     <description>Spring Boot Integration Tests with Karate</description>
 
     <properties>

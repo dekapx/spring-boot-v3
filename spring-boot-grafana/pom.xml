@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>spring-boot-grafana-v1</artifactId>
+	<artifactId>spring-boot-grafana</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-grafana-v1</name>
+	<name>spring-boot-grafana</name>
 	<description>Spring Boot Grafana Dashboard</description>
 
 	<properties>

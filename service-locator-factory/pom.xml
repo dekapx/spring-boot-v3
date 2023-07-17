@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>service-locator-factory-v1</artifactId>
+	<artifactId>service-locator-factory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-locator-factory-v1</name>
+	<name>service-locator-factory</name>
 	<description>SpringBoot Service Locator Factory Bean Demo</description>
 
 	<properties>
