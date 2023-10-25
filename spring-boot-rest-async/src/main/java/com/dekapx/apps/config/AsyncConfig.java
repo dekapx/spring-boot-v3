@@ -14,7 +14,7 @@ public class AsyncConfig implements AsyncConfigurer {
     @Override
     public AsyncTaskExecutor getAsyncExecutor() {
         final ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setThreadNamePrefix("dekapx-async");
+        threadPoolTaskExecutor.setThreadNamePrefix("contact-service-sync-job");
         threadPoolTaskExecutor.setCorePoolSize(2);
         threadPoolTaskExecutor.initialize();
         return threadPoolTaskExecutor;
