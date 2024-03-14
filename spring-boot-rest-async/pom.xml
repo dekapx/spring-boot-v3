@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.example</groupId>
+    <groupId>com.dekapx.apps</groupId>
     <artifactId>spring-boot-rest-async</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-rest-async</name>

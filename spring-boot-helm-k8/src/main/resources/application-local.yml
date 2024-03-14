@@ -1,0 +1,3 @@
+app:
+  client-name: ${CLIENT_NAME:TestClient}
+  welcome-message: ${WELCOME_MESSAGE:Welcome to SpringBoot Helm K8}

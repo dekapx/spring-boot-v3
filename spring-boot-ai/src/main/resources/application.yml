@@ -1,0 +1,8 @@
+server:
+    port: 8081
+spring:
+    application:
+        name: spring-boot-redis-cache
+    ai:
+        openai:
+            apikey: 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
