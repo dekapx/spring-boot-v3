@@ -18,13 +18,13 @@ public class UserOnboardingEventListenerITest {
 
     @Test
     public void publishUserOnboardingEvent() {
-        UserOnboardingEvent<UserModel> userOnboardingEvent = prepareUserOnboardingEvent();
+        UserOnboardingEvent<UserModel> userOnboardingEvent = prepareUserOnboardingEvent(userModelSupplier.get());
         this.applicationContextAware.getApplicationContext().publishEvent(userOnboardingEvent);
         log.info("Publish UserOnboardingEvent...");
     }
 
-    private UserOnboardingEvent<UserModel> prepareUserOnboardingEvent() {
-        return new UserOnboardingEvent(this, userModelSupplier.get());
+    private UserOnboardingEvent<UserModel> prepareUserOnboardingEvent(UserModel userModel) {
+        return new UserOnboardingEvent(this, userModel);
     }
 
     private Supplier<UserModel> userModelSupplier = () ->
