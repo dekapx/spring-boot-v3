@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataEnrichmentService {
     public EnrichmentModel loadData(NotificationModel notificationModel) {
+        log.info("DataEnrichmentService invoked...");
         return new EnrichmentModel();
     }
 }

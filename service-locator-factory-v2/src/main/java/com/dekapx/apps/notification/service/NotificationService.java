@@ -13,11 +13,4 @@ public class NotificationService {
     @Autowired
     private IcsdHandlerFactory icsdHandlerFactory;
 
-    public void performDataEnrichment() {
-
-    }
-
-    public void invokeIcsdHandler() {
-
-    }
 }

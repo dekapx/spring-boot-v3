@@ -1,5 +1,7 @@
 package com.dekapx.apps.notification.icsd.handler;
 
-public interface IcsdHandler {
+import com.dekapx.apps.notification.model.NotificationModel;
 
+public interface IcsdHandler {
+    void invokeHandler(NotificationModel notificationModel);
 }

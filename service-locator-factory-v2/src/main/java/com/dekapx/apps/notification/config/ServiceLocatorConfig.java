@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ServiceLocatorConfig {
-    @Bean
-    public ServiceLocatorFactoryBean icsdHandlerFactoryBean() {
-        return getServiceLocatorFactoryBean(IcsdHandlerFactory.class);
-    }
+//    @Bean
+//    public ServiceLocatorFactoryBean icsdHandlerFactoryBean() {
+//        return getServiceLocatorFactoryBean(IcsdHandlerFactory.class);
+//    }
 
     @Bean
     public ServiceLocatorFactoryBean euroclearApiHandlerFactoryBean() {

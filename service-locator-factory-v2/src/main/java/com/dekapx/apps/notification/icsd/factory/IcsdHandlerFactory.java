@@ -1,9 +1,9 @@
 package com.dekapx.apps.notification.icsd.factory;
 
 
-import com.dekapx.apps.notification.icsd.handler.IcsdHandler;
+import com.dekapx.apps.notification.model.NotificationModel;
 
 public interface IcsdHandlerFactory {
-    IcsdHandler getIcsdHandler(String beanName);
+    void invokeIcsdHandlers(NotificationModel notificationModel);
 }
 

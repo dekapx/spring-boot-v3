@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class EuroclearFeignclient {
     public void callCpi() {
-        log.info("ClearstreamFeignClient API invoked...");
+        log.info("EuroclearFeignclient API invoked...");
     }
 }

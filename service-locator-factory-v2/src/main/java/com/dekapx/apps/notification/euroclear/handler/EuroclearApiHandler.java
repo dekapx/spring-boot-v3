@@ -1,5 +1,7 @@
 package com.dekapx.apps.notification.euroclear.handler;
 
+import com.dekapx.apps.notification.model.NotificationModel;
+
 public interface EuroclearApiHandler {
-    void handleRequest();
+    void handleRequest(NotificationModel notificationModel);
 }
