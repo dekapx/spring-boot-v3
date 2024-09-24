@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
+        <version>3.3.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -16,7 +16,7 @@
     <description>Spring Boot REST Async</description>
 
     <properties>
-        <java.version>20</java.version>
+        <java.version>22</java.version>
         <springdoc-openapi-starter.version>2.1.0</springdoc-openapi-starter.version>
     </properties>
 
