@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.dekapx.apps.notification.util.BeanUtils.generateBeanName;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
@@ -16,7 +17,7 @@ public class EuroclearApiHandlerFactoryITest {
 
     @Test
     public void givenBeanNameShouldLookupAndReturnFileWriter() {
-        var apiHandler = this.euroclearApiHandlerFactory.getApiHandler("redemptionEuroclearApiHandler");
+        var apiHandler = this.euroclearApiHandlerFactory.getApiHandler(generateBeanName(RedemptionEuroclearApiHandler.class));
         assertThat(apiHandler).isNotNull()
                 .satisfies(o -> {
                     assertThat(o).isInstanceOf(RedemptionEuroclearApiHandler.class);
