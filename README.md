@@ -1,11 +1,24 @@
-# spring-boot-v3
-Spring Boot 3 Samples
+# Spring Boot Microservices
+## Loan Service     [loan-service]
+    - Request:
+        - First Name
+        - Last Name
+        - Date of Birth
+        - SSN
+        - Email
+        - Phone
+        - Loan Amount
+    - Response
+        - Decision  [Approved Unapproved]
+## Credit Rating Service    [credit-rating-service]
+    - Request:
+        - First Name
+        - Last Name
+        - SSN
+    - Response
+        - First Name
+        - Last Name
+        - SSN
+        - Rating
 
 
-# Run Postgres with volume in Docker
-$ docker volume create pgdata
-
-$ docker container run \
-    --name docker-postgres -p 5432:5432 \
-    -e POSTGRES_USER=dekapx -e POSTGRES_PASSWORD=passw0rd \
-    -e POSTGRES_DB=testdb -v pgdata:/var/lib/postgresql/data postgres:14.1
