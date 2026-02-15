@@ -1,0 +1,13 @@
+package com.dekapx.apps;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SpringBootCaffeineCacheV1ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
