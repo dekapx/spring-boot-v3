@@ -13,7 +13,7 @@ spring:
     show-sql: false
 cache:
   type: caffeine
-  cache-names: users
+  cache-names: contacts
   caffeine:
     spec: maximumSize=1000,expireAfterWrite=1m
 server:
