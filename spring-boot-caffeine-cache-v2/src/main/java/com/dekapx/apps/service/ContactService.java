@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface ContactService {
     List<Contact> getContacts();
+    void invalidateAndReload();
+
+    void updateCache();
 }

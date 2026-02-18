@@ -21,10 +21,18 @@ public class ContactController {
         this.service = service;
     }
 
-    @GetMapping(value = "/ping", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> ping() {
-        log.info("ContactController.ping() method invoked...");
-        return new ResponseEntity<>("SpringBoot Redis Cache API...", HttpStatus.OK);
+    @GetMapping(value = "/reloadCache")
+    public ResponseEntity<String> reload() {
+        log.info("Cache invalidate and reloaded...");
+        this.service.invalidateAndReload();
+        return new ResponseEntity<>("Cache invalidate and reloaded", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/updateCache")
+    public ResponseEntity<String> updateCache() {
+        log.info("Update cache entry..");
+        this.service.updateCache();
+        return new ResponseEntity<>("Update cache entry", HttpStatus.OK);
     }
 
     @GetMapping(value = "/contacts", produces = MediaType.APPLICATION_JSON_VALUE)

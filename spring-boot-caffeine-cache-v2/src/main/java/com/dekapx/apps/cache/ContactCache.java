@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -17,20 +20,48 @@ public class ContactCache {
     private static final String CACHE_KEY = "ALL_USERS";
 
     private ContactRepository contactRepository;
-    private Cache<String, List<Contact>> contactCache;
+    private Cache<String, Map<Long, Contact>> contactCache;
 
     @Autowired
     public ContactCache(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
         this.contactCache = Caffeine.newBuilder()
-                .initialCapacity(5)
-                .maximumSize(10)
-                .expireAfterWrite(10, TimeUnit.SECONDS)
+                .initialCapacity(2)
+                .maximumSize(5)
+                .expireAfterWrite(1, TimeUnit.MINUTES)
                 .recordStats()
                 .build();
     }
 
+    public void invalidateAndReload() {
+        log.info("Invalidate and reload the cache...");
+        contactCache.invalidate(CACHE_KEY);
+        contactCache.put(CACHE_KEY, toContactsMap());
+    }
+
     public List<Contact> getContacts() {
-        return contactCache.get(CACHE_KEY, key -> this.contactRepository.getContacts());
+        Map<Long, Contact> contactsMap = contactCache.get(CACHE_KEY, key -> toContactsMap());
+        return contactsMap.values()
+                .stream()
+                .collect(Collectors.toList());
+    }
+
+    private Map<Long, Contact> toContactsMap() {
+        List<Contact> contacts = this.contactRepository.getContacts();
+        Map<Long, Contact> contactsMap = contacts.stream()
+                .collect(Collectors.toMap(Contact::getId, Function.identity()));
+        return contactsMap;
+    }
+
+    public void updateCache() {
+        Map<Long, Contact> contactsMap = contactCache.getIfPresent(CACHE_KEY);
+        if (contactsMap != null) {
+            Contact contact = contactsMap.get(1L);
+            if (contact != null) {
+                contact.setCity("Dublin");
+            }
+            contactsMap.put(1L, contact);
+        }
+        contactCache.put(CACHE_KEY, contactsMap);
     }
 }

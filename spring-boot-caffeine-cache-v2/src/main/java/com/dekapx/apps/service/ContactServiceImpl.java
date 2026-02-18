@@ -23,4 +23,14 @@ public class ContactServiceImpl implements ContactService {
         log.info("Fetch contacts from service....");
         return this.contactCache.getContacts();
     }
+
+    @Override
+    public void invalidateAndReload() {
+        this.contactCache.invalidateAndReload();
+    }
+
+    @Override
+    public void updateCache() {
+        this.contactCache.updateCache();
+    }
 }

@@ -18,13 +18,23 @@ public class ContactRepositoryImpl implements ContactRepository {
                         .lastName("Doe")
                         .email("john.doe@outlook.com")
                         .phone("1234567890")
+                        .city("San Francisco")
                         .build(),
                 Contact.builder()
                         .id(2L)
-                        .firstName("Jane")
-                        .lastName("Doe")
-                        .email("Jane.Doe@amazon.com")
-                        .phone("0987654321")
+                        .firstName("Brian")
+                        .lastName("Adams")
+                        .email("Brian.Adams@amazon.com")
+                        .phone("1234567890")
+                        .city("New York")
+                        .build(),
+                Contact.builder()
+                        .id(3L)
+                        .firstName("Wayne")
+                        .lastName("Smith")
+                        .email("Wayne.Smith@meta.com")
+                        .phone("1234567890")
+                        .city("Los Angeles")
                         .build());
     }
 }
