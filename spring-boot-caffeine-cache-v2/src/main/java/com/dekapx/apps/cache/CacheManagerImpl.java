@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class ContactCacheManager {
+public class CacheManagerImpl implements CacheManager {
     private static final String CACHE_KEY = "ALL_USERS";
 
     private ContactRepository contactRepository;
     private Cache<String, Map<Long, Contact>> cache;
 
     @Autowired
-    public ContactCacheManager(ContactRepository contactRepository, Cache<String, Map<Long, Contact>> cache) {
+    public CacheManagerImpl(ContactRepository contactRepository, Cache<String, Map<Long, Contact>> cache) {
         this.contactRepository = contactRepository;
         this.cache = cache;
     }

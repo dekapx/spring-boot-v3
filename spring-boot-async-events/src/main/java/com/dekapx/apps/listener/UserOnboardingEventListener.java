@@ -9,6 +9,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 @Slf4j
 @Component
 public class UserOnboardingEventListener {
@@ -18,9 +20,18 @@ public class UserOnboardingEventListener {
     @Async
     @EventListener
     public void onApplicationEvent(UserOnboardingEvent<UserModel> event) {
+        sleepForSeconds(5);
         UserModel userModel = event.getModel();
         log.info("UserOnboardingEvent received... {}", userModel.getFirstName());
         this.userOnboardingService.onboardUser(userModel);
         log.info("UserOnboardingEvent processing completed... {}", userModel.getFirstName());
+    }
+
+    private void sleepForSeconds(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

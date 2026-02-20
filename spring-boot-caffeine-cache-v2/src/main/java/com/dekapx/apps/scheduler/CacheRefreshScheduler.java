@@ -1,6 +1,6 @@
 package com.dekapx.apps.scheduler;
 
-import com.dekapx.apps.cache.ContactCacheManager;
+import com.dekapx.apps.cache.CacheManagerImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -11,16 +11,16 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableScheduling
 public class CacheRefreshScheduler {
-    private ContactCacheManager contactCacheManager;
+    private CacheManagerImpl cacheManagerImpl;
 
     @Autowired
-    public CacheRefreshScheduler(final ContactCacheManager contactCacheManager) {
-        this.contactCacheManager = contactCacheManager;
+    public CacheRefreshScheduler(final CacheManagerImpl cacheManagerImpl) {
+        this.cacheManagerImpl = cacheManagerImpl;
     }
 
     @Scheduled(fixedRate = 60000)
     public void refreshCache() {
         log.info("Refreshing cache...");
-        this.contactCacheManager.invalidateAndReload();
+        this.cacheManagerImpl.invalidateAndReload();
     }
 }

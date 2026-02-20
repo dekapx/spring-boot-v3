@@ -19,8 +19,9 @@ public class UserOnboardingEventListenerITest {
     @Test
     public void publishUserOnboardingEvent() {
         UserOnboardingEvent<UserModel> userOnboardingEvent = prepareUserOnboardingEvent(userModelSupplier.get());
+        log.info("Publishing UserOnboardingEvent...");
         this.applicationContextAware.getApplicationContext().publishEvent(userOnboardingEvent);
-        log.info("Publish UserOnboardingEvent...");
+        log.info("UserOnboardingEvent published...");
     }
 
     private UserOnboardingEvent<UserModel> prepareUserOnboardingEvent(UserModel userModel) {
