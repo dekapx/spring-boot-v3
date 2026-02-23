@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>spring-boot-async-events</artifactId>
+    <artifactId>spring-boot-async-events-v1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-async-events</name>
+    <name>spring-boot-async-events-v1</name>
 	<description>Demo project for Spring Boot</description>
 
     <properties>
