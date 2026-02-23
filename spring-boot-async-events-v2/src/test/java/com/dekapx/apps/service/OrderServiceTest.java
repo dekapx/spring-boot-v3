@@ -1,20 +1,22 @@
 package com.dekapx.apps.service;
 
-import com.dekapx.apps.listener.TestApplicationContextAware;
+import com.dekapx.apps.listener.OrderEventListener;
 import com.dekapx.apps.model.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.stream.IntStream;
 
+@Slf4j
 @SpringBootTest
 public class OrderServiceTest {
     @Autowired
     private OrderService orderService;
 
     @Autowired
-    private TestApplicationContextAware applicationContextAware;
+    private OrderEventListener orderEventListener;
 
     @Test
     public void placeBulkOrders() {
@@ -26,5 +28,8 @@ public class OrderServiceTest {
                     .price(1000.00)
                     .build());
         });
+
+        log.info("Order Success Count {}", this.orderEventListener.getProcessedCount());
+        log.info("Order Failure Count {}", this.orderEventListener.getFailedCount());
     }
 }
