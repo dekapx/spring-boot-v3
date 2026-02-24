@@ -1,7 +1,7 @@
 package com.dekapx.apps.service;
 
-import com.dekapx.apps.listener.OrderEventListener;
-import com.dekapx.apps.model.Order;
+import com.dekapx.apps.listener.OrderProcessListener;
+import com.dekapx.apps.model.OrderModel;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +11,17 @@ import java.util.stream.IntStream;
 
 @Slf4j
 @SpringBootTest
-public class OrderServiceTest {
+public class OrderModelServiceTest {
     @Autowired
     private OrderService orderService;
 
     @Autowired
-    private OrderEventListener orderEventListener;
+    private OrderProcessListener orderEventListener;
 
     @Test
     public void placeBulkOrders() {
         IntStream.range(0, 10).forEach(count -> {
-            this.orderService.placeOrder(Order.builder()
+            this.orderService.placeOrder(OrderModel.builder()
                     .orderId("ORD-12345-" + count)
                     .productName("Laptop")
                     .quantity(10)

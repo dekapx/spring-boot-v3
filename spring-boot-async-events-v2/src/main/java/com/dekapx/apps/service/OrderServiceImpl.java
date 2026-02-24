@@ -1,7 +1,7 @@
 package com.dekapx.apps.service;
 
 import com.dekapx.apps.event.OrderEvent;
-import com.dekapx.apps.model.Order;
+import com.dekapx.apps.model.OrderModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
@@ -14,8 +14,8 @@ public class OrderServiceImpl implements OrderService {
     private final ApplicationEventPublisher eventPublisher;
 
     @Override
-    public void placeOrder(Order order) {
-        log.info("Placing order {}", order);
-        this.eventPublisher.publishEvent(new OrderEvent(this, order));
+    public void placeOrder(OrderModel orderModel) {
+        log.info("Placing order {}", orderModel.getOrderId());
+        this.eventPublisher.publishEvent(new OrderEvent(this, orderModel));
     }
 }

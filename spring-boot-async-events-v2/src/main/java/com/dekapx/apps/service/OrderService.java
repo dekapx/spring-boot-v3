@@ -1,7 +1,7 @@
 package com.dekapx.apps.service;
 
-import com.dekapx.apps.model.Order;
+import com.dekapx.apps.model.OrderModel;
 
 public interface OrderService {
-    void placeOrder(Order order);
+    void placeOrder(OrderModel orderModel);
 }
