@@ -18,7 +18,7 @@ public class ContactRepositoryImpl implements ContactRepository {
                         .firstName("John")
                         .lastName("Doe")
                         .email("john.doe@outlook.com")
-                        .phone("1234567890")
+                        .phone("+1 789 365 4321")
                         .city("San Francisco")
                         .status(Status.ACTIVE)
                         .build(),
@@ -27,7 +27,7 @@ public class ContactRepositoryImpl implements ContactRepository {
                         .firstName("Brian")
                         .lastName("Adams")
                         .email("Brian.Adams@amazon.com")
-                        .phone("1234567890")
+                        .phone("+1 987 654 3210")
                         .city("New York")
                         .status(Status.ACTIVE)
                         .build(),
@@ -36,7 +36,7 @@ public class ContactRepositoryImpl implements ContactRepository {
                         .firstName("Wayne")
                         .lastName("Smith")
                         .email("Wayne.Smith@meta.com")
-                        .phone("1234567890")
+                        .phone("+1 123 456 7890")
                         .city("Los Angeles")
                         .status(Status.INACTIVE)
                         .build());
