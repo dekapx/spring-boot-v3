@@ -1,13 +1,13 @@
 package com.dekapx.apps.listener;
 
-import com.dekapx.apps.event.OrderEvent;
-import com.dekapx.apps.model.OrderModel;
+import com.dekapx.apps.event.SensorEvent;
+import com.dekapx.apps.model.SensorReadingModel;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.function.Supplier;
+import java.time.LocalDateTime;
 
 @Slf4j
 @SpringBootTest
@@ -17,22 +17,23 @@ public class OrderModelEventListenerTest {
 
     @Test
     public void publishUserOnboardingEvent() {
-        OrderEvent<OrderModel> orderEvent = prepareOrderEvent(orderSupplier.get());
+        SensorEvent<SensorReadingModel> sensorEvent = prepareEvent(prepareModel());
         log.info("Publishing UserOnboardingEvent...");
 
-        this.applicationContextAware.getApplicationContext().publishEvent(orderEvent);
+        this.applicationContextAware.getApplicationContext().publishEvent(sensorEvent);
         log.info("UserOnboardingEvent published...");
     }
 
-    private OrderEvent<OrderModel> prepareOrderEvent(OrderModel orderModel) {
-        return new OrderEvent(this, orderModel);
+    private SensorEvent<SensorReadingModel> prepareEvent(SensorReadingModel model) {
+        return new SensorEvent(this, model);
     }
 
-    private Supplier<OrderModel> orderSupplier = () ->
-       OrderModel.builder()
-               .orderId("ORD-12345")
-               .productName("Laptop")
-               .quantity(10)
-               .price(1000.00)
-               .build();
+    private SensorReadingModel prepareModel() {
+        return SensorReadingModel.builder()
+                .sensorId("SENSOR-001")
+                .temperature(25.5)
+                .humidity(60.0)
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
 }
