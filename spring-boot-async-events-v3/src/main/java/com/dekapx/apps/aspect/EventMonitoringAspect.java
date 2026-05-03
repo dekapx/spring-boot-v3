@@ -15,10 +15,10 @@ public class EventMonitoringAspect {
         String eventName = pjp.getArgs()[0].getClass().getSimpleName();
         try {
             Object result = pjp.proceed();
-            log.info("EventMonitoringAspect - " + eventName + " processed successfully");
+            log.info("---------------- EventMonitoring [{}] processed successfully ----------------", eventName);
             return result;
         } catch (Exception e) {
-            log.error("EventMonitoringAspect - " + eventName + " failed", e);
+            log.error("---------------- EventMonitoring [{}] failed ----------------", eventName);
             throw e;
         }
     }

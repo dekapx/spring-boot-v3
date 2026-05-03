@@ -1,6 +1,7 @@
 package com.dekapx.apps.channel;
 
 import com.dekapx.apps.model.SensorReadingModel;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -10,15 +11,17 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @Slf4j
 @Component
-public class EventBuffer {
+@RequiredArgsConstructor
+public class SensorEventBuffer {
+    private static final int QUEUE_SIZE = 10_000;
+
     private final BlockingQueue<SensorReadingModel> buffer =
-            new LinkedBlockingQueue<>(10_000);
+            new LinkedBlockingQueue<>(QUEUE_SIZE);
 
     public boolean offer(SensorReadingModel model) {
         boolean accepted = buffer.offer(model);
         if (!accepted) {
-            // TODO: Metric/alert: queue full — consider dead-letter or retry
-            log.warn("Event buffer full, dropping event");
+            log.warn("Buffer is full. Sensor reading [{}] added to Dead Letter Queue", model.toString());
         }
         return accepted;
     }

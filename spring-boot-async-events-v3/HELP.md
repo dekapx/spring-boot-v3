@@ -165,5 +165,9 @@ queueCapacity       500         30–50               Delays thread scale-up too
 rejectionPolicy     default     CallerRunsPolicy    Prevents silent task drops
 ```
 
-```Java
+```bash
+# Docker Compose Commands
+$ docker compose -f postgres-docker.yml up -d        
+$ docker compose -f postgres-docker.yml down
+$ docker compose logs -f
 ```

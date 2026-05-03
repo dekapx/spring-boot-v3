@@ -35,7 +35,7 @@ public class SensorController {
     @Operation(summary = "Register Sensor Reading")
     @PostMapping(SENSOR_URL)
     public ResponseEntity<SensorReadingModel> registerReading(@RequestBody SensorReadingModel model) {
-        log.info("Registering sensor reading {}", model);
+        log.info("Registering sensor reading from Sensor ID: [{}]", model.getSensorId());
         this.eventPublisher.publishEvent(new SensorEvent(this, model));
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
