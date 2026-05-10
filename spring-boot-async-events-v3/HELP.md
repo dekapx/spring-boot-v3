@@ -2,6 +2,7 @@
 ## Spring Boot Async Events application that demonstrates how to use asynchronous event handling with custom thread pool configuration.
 ## It also demonstrates how to process bulk Async events using EventListener and @Async annotations using Event Buffering and ThreadPoolTaskExecutor.
 ## It runs a scheduler to process batch of events on time interval and store them in database.
+## The application also provides REST APIs to retrieve the average sensor readings for a given time range and metric using Async processing and CompletableFuture.
 
 ### Reference URLs
 
