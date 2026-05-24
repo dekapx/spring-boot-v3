@@ -16,8 +16,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class AsyncConfig implements AsyncConfigurer {
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(10);
-        executor.setMaxPoolSize(20);
+        executor.setCorePoolSize(10);   // CPU Cores * 2
+        executor.setMaxPoolSize(20);    // CPU Cores * 4
         executor.setQueueCapacity(1_000);
         executor.setThreadNamePrefix("AsyncTask-");
         executor.setKeepAliveSeconds(60);

@@ -1,3 +1,80 @@
 spring:
   application:
-    name: spring-boot-batch-v2
+    name: data-copy-job
+
+  # PostgreSQL DataSource
+  datasource:
+    url: jdbc:postgresql://localhost:5432/batchdb
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
+  # Redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
+          max-wait: -1ms
+
+  # Spring Batch
+  batch:
+    job:
+      enabled: false          # Don't auto-start; trigger manually or via scheduler
+    jdbc:
+      initialize-schema: always  # Auto-create Spring Batch meta tables
+
+# Batch Job Configuration
+batch:
+  redis:
+    key-pattern: "employee:*"   # Redis key pattern to scan
+    scan-count: 100             # Keys per SCAN cursor call
+  chunk-size: 50                # Items per chunk
+  skip-limit: 10                # Max skippable errors per job run
+  retry-limit: 3                # Retry attempts on transient errors
+
+# Logging
+logging:
+  level:
+    com.example.batch: DEBUG
+    org.springframework.batch: INFO
+    org.springframework.data.redis: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,batch
+  endpoint:
+    health:
+      show-details: always
+
+

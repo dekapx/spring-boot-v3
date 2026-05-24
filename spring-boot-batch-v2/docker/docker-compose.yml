@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  # -------------------------------------------------------------------------
+  # PostgreSQL
+  # -------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: batch_postgres
+    environment:
+      POSTGRES_DB: batchdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d batchdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------------------------------------------
+  # Redis
+  # -------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: batch_redis
+    ports:
+      - "6379:6379"
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------------------------------------------
+  # Redis seed — loads test data into Redis on startup
+  # -------------------------------------------------------------------------
+  redis-seed:
+    image: redis:7-alpine
+    container_name: batch_redis_seed
+    depends_on:
+      redis:
+        condition: service_healthy
+    entrypoint: >
+      sh -c "
+        redis-cli -h redis SET employee:1 '{\"id\":\"1\",\"firstName\":\"Alice\",\"lastName\":\"Johnson\",\"dateOfBirth\":\"1988-03-22\",\"email\":\"alice.johnson@example.com\",\"department\":\"Engineering\",\"jobTitle\":\"Senior Developer\"}' &&
+        redis-cli -h redis SET employee:2 '{\"id\":\"2\",\"firstName\":\"Bob\",\"lastName\":\"Williams\",\"dateOfBirth\":\"1992-07-14\",\"email\":\"bob.williams@example.com\",\"department\":\"Marketing\",\"jobTitle\":\"Marketing Manager\"}' &&
+        redis-cli -h redis SET employee:3 '{\"id\":\"3\",\"firstName\":\"Carol\",\"lastName\":\"Davis\",\"dateOfBirth\":\"1985-11-05\",\"email\":\"carol.davis@example.com\",\"department\":\"Finance\",\"jobTitle\":\"Financial Analyst\"}' &&
+        redis-cli -h redis SET employee:4 '{\"id\":\"4\",\"firstName\":\"David\",\"lastName\":\"Brown\",\"dateOfBirth\":\"1995-01-30\",\"email\":\"david.brown@example.com\",\"department\":\"HR\",\"jobTitle\":\"HR Specialist\"}' &&
+        redis-cli -h redis SET employee:5 '{\"id\":\"5\",\"firstName\":\"Eve\",\"lastName\":\"Martinez\",\"dateOfBirth\":\"1991-09-18\",\"email\":\"eve.martinez@example.com\",\"department\":\"Engineering\",\"jobTitle\":\"DevOps Engineer\"}' &&
+        echo 'Seed data loaded successfully'
+      "
+    restart: "no"
+
+volumes:
+  postgres_data:
+  redis_data:
