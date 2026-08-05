@@ -5,4 +5,4 @@ spring:
         name: spring-boot-redis-cache
     ai:
         openai:
-            apikey: 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
+            apikey: <API-KEY>
