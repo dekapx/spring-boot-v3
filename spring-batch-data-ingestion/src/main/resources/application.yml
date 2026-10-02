@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: spring-batch-data-ingestion
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:orderdb}
+    username: ${DB_USER:batchuser}
+    password: ${DB_PASSWORD:batchpass}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      # 'update' is convenient for local/dev use. For production, use a
+      # migration tool (Flyway/Liquibase) and set this to 'validate' --
+      # see reference-schema.sql for the equivalent DDL to manage that way.
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          # Matches app.batch.chunk-size below so Hibernate batches inserts
+          # /updates in step with Spring Batch's own chunk commits.
+          batch_size: 200
+        order_inserts: true
+        order_updates: true
+
+  batch:
+    job:
+      # The job launches automatically on startup via JobLauncherApplicationRunner.
+      # Set to 'never' if you want to trigger the job manually (e.g. via an endpoint or scheduler).
+      enabled: true
+    jdbc:
+      # Spring Batch's own metadata tables (BATCH_JOB_INSTANCE, etc.) -- unrelated
+      # to the JPA-managed 'orders' table. 'always' creates them on first run;
+      # use 'never' once they exist in prod and are managed via migrations instead.
+      initialize-schema: always
+
+logging:
+  level:
+    root: INFO
+    com.dekapx.apps: DEBUG
+    org.springframework.batch: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,batch
+
+# --- Application-specific configuration ---
+app:
+  rest:
+    base-url: ${SOURCE_API_BASE_URL:https://api.example.com}
+    orders-path: /api/orders
+    page-size: 200
+    connect-timeout-ms: 5000
+    read-timeout-seconds: 30
+
+  batch:
+    chunk-size: 200
+    skip-limit: 100
+    write-retry-limit: 3
+    # Number of concurrent worker threads processing/writing chunks
+    concurrency: 4
