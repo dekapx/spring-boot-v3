@@ -30,6 +30,7 @@ public class PaymentServiceFactoryIntegrationTest {
                 });
     }
 
+
     @Test
     public void givenInvalidPaymentType_whenGetPaymentService_thenThrowsException() {
         assertThatThrownBy(() -> paymentServiceFactory.getPaymentService("INVALID_PAYMENT_TYPE"))
