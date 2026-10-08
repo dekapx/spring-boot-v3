@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-import static com.dekapx.apps.model.PaymentType.CREDIT_CARD;
+import static com.dekapx.apps.model.PaymentType.PAYPAL;
 
 @Slf4j
 @Component
-public class CreditCardPaymentService implements PaymentService {
+public class PaypalPaymentService implements PaymentService {
     @Override
     public String getType() {
-        return CREDIT_CARD;
+        return PAYPAL;
     }
 
     @Override
     public PaymentReceipt makePayment(PaymentRequest request) {
-        log.info("Processing credit card payment for customer: {}, amount: {}", request.customerId(), request.amount());
-        return new PaymentReceipt("CC" + UUID.randomUUID(),
-                CREDIT_CARD,
+        log.info("Processing Paypal payment for customer: {}, amount: {}", request.customerId(), request.amount());
+        return new PaymentReceipt("PP" + UUID.randomUUID(),
+                PAYPAL,
                 request.customerId(),
                 request.amount());
     }

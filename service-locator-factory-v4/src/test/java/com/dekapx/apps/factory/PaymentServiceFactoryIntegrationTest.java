@@ -19,7 +19,10 @@ public class PaymentServiceFactoryIntegrationTest {
     @ParameterizedTest(name = "PaymentService {0} to {1}")
     @CsvSource({
             "CREDIT_CARD, CreditCardPaymentService",
-            "DEBIT_CARD, DebitCardPaymentService"
+            "DEBIT_CARD, DebitCardPaymentService",
+            "PAYPAL, PaypalPaymentService",
+            "APPLE_PAY, ApplePayPaymentService",
+            "GOOGLE_PAY, GooglePayPaymentService"
     })
     public void givenPaymentType_whenGetPaymentService_thenReturnsExpectedService(String paymentType, String expectedBeanName) {
         PaymentService paymentService = paymentServiceFactory.getPaymentService(paymentType);

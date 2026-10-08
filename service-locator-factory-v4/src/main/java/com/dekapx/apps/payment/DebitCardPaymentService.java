@@ -10,7 +10,7 @@ import java.util.UUID;
 import static com.dekapx.apps.model.PaymentType.DEBIT_CARD;
 
 @Slf4j
-@Component("debitCardPaymentService")
+@Component
 public class DebitCardPaymentService implements PaymentService {
     @Override
     public String getType() {

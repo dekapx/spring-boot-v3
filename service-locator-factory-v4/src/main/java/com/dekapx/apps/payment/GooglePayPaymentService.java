@@ -11,17 +11,17 @@ import static com.dekapx.apps.model.PaymentType.CREDIT_CARD;
 
 @Slf4j
 @Component
-public class CreditCardPaymentService implements PaymentService {
+public class GooglePayPaymentService implements PaymentService {
     @Override
     public String getType() {
-        return CREDIT_CARD;
+        return "GOOGLE_PAY";
     }
 
     @Override
     public PaymentReceipt makePayment(PaymentRequest request) {
-        log.info("Processing credit card payment for customer: {}, amount: {}", request.customerId(), request.amount());
-        return new PaymentReceipt("CC" + UUID.randomUUID(),
-                CREDIT_CARD,
+        log.info("Processing google pay payment for customer: {}, amount: {}", request.customerId(), request.amount());
+        return new PaymentReceipt("GP" + UUID.randomUUID(),
+                "GOOGLE_PAY",
                 request.customerId(),
                 request.amount());
     }
