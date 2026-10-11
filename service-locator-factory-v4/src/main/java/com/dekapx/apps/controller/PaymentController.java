@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class PaymentController {
     }
 
     @PostMapping("/process")
-    public ResponseEntity<PaymentReceipt> makePayment(PaymentRequest paymentRequest) {
+    public ResponseEntity<PaymentReceipt> makePayment(@RequestBody PaymentRequest paymentRequest) {
         PaymentReceipt receipt = paymentProcessor.processPayment(paymentRequest);
         return ResponseEntity.ok(receipt);
     }

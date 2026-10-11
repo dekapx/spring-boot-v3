@@ -8,6 +8,7 @@ import com.dekapx.apps.payment.DebitCardPaymentService;
 import com.dekapx.apps.payment.GooglePayPaymentService;
 import com.dekapx.apps.payment.PaymentService;
 import com.dekapx.apps.payment.PaypalPaymentService;
+import com.dekapx.apps.util.BeanUtils;
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,6 @@ import static com.dekapx.apps.model.PaymentType.CREDIT_CARD;
 import static com.dekapx.apps.model.PaymentType.DEBIT_CARD;
 import static com.dekapx.apps.model.PaymentType.GOOGLE_PAY;
 import static com.dekapx.apps.model.PaymentType.PAYPAL;
-import static com.dekapx.apps.util.BeanUtils.generateBeanName;
 
 @Configuration
 public class ServiceLocatorConfig {
@@ -44,6 +44,6 @@ public class ServiceLocatorConfig {
     }
 
     public String getFactoryBeanName(Class<? extends PaymentService> clazz) {
-        return generateBeanName(clazz);
+        return BeanUtils.generateBeanName(clazz);
     }
 }

@@ -10,6 +10,8 @@
 	</parent>
 	<groupId>com.dekapx.apps</groupId>
 	<artifactId>service-locator-factory-v4</artifactId>
+	<name>Service Locator Factory</name>
+	<description>Service Locator Factory for Payment Services</description>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

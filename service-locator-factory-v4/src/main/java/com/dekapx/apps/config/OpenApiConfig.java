@@ -13,8 +13,8 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .components(new Components())
                 .info(new Info()
-                        .title("Order Agent API")
-                        .description("Order Agent Service API version 1.0")
+                        .title("Payment Service API")
+                        .description("Payment Service API version 1.0")
                         .version("1.0"));
     }
 }
