@@ -16,16 +16,16 @@ public class PaymentProcessorTest {
     private PaymentProcessor paymentProcessor;
 
     @Test
-    public void givenPaymentType_shouldProcessPayment() {
-        PaymentRequest paymentRequest = getPaymentRequest();
-        PaymentReceipt paymentReceipt = this.paymentProcessor.processPayment(paymentRequest);
-        assertThat(paymentReceipt)
+    void givenPaymentRequest_whenProcessing_thenReturnsReceiptWithMatchingDetails() {
+        PaymentRequest request =
+                new PaymentRequest("C1001", "CREDIT_CARD", new BigDecimal("100.00"));
+
+        assertThat(paymentProcessor.processPayment(request))
                 .isNotNull()
-                .satisfies(receipt -> {
-                    assertThat(receipt.customerId()).isEqualTo(paymentRequest.customerId());
-                    assertThat(receipt.amount()).isEqualTo(paymentRequest.amount());
-                    assertThat(receipt.transactionId()).isNotNull();
-                });
+                .returns(request.customerId(), PaymentReceipt::customerId)
+                .returns(request.amount(), PaymentReceipt::amount)
+                .matches(receipt -> receipt.transactionId() != null,
+                        "transaction ID is generated");
     }
 
     private PaymentRequest getPaymentRequest() {
